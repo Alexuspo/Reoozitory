@@ -5,28 +5,21 @@
 </head>
 <body>
   <h1>Ověření hesla</h1>
-  
-  <form id="loginForm" onsubmit="return validateForm(event)">
-    <label for="username">Uživatelské jméno:</label>
-    <input type="text" id="username" required><br><br>
-    
+  <form onsubmit="return checkPassword()">
     <label for="password">Heslo:</label>
-    <input type="password" id="password" required><br><br>
-    
-    <input type="submit" value="Přihlásit se">
+    <input type="password" id="password">
+    <button type="submit">Odeslat</button>
   </form>
-  
+
   <script>
-    function validateForm(event) {
-      event.preventDefault();
-      
-      var username = document.getElementById("username").value;
+    function checkPassword() {
       var password = document.getElementById("password").value;
-      
-      if (username === "Alexus" && password === "Dynmap69") {
+      if (password === "Dynmap69") {
         window.location.href = "http://ghast.hostify.cz:39612/";
+        return false;
       } else {
-        alert("Nesprávné uživatelské jméno nebo heslo. Zkuste to znovu.");
+        alert("Neplatné heslo!");
+        return false;
       }
     }
   </script>
