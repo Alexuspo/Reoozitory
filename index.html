@@ -1,32 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Přihlášení pomocí IP adresy</title>
+  <title>Ověření hesla</title>
 </head>
 <body>
-  <h1>Přihlášení pomocí IP adresy</h1>
-  <form onsubmit="return login(event)">
-    <label for="ip">IP adresa:</label>
-    <input type="text" id="ip" required>
-    <button type="submit">Přihlásit se</button>
+  <h1>Ověření hesla</h1>
+  <form onsubmit="return checkPassword()">
+    <label for="password">Heslo:</label>
+    <input type="password" id="password">
+    <button type="submit">Odeslat</button>
   </form>
 
   <script>
-    function login(event) {
-      event.preventDefault(); // Zabraňuje odeslání formuláře
-
-      var inputIP = document.getElementById("ip").value;
-      var allowedIPs = ["86.49.238.36:7849", "89.102.254.59", "46.13.76.0:51093"];
-
-      // Kontrola, zda se vstupní IP adresa nachází v seznamu povolených IP adres
-      if (allowedIPs.includes(inputIP)) {
-        // Přesměrování na další stránku nebo akci po úspěšném přihlášení
-        window.location.href = "http://ghast.hostify.cz:39613/";
+    function checkPassword() {
+      var password = document.getElementById("password").value;
+      if (password === "Dynmap69") {
+        window.location.href = "http://ghast.hostify.cz:39612/";
+        return false;
       } else {
-        alert("Neplatná IP adresa!");
+        alert("Neplatné heslo!");
+        return false;
       }
-
-      return false;
     }
   </script>
 </body>
